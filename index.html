@@ -98,6 +98,8 @@
           <button class="btn btnPrimary" data-mode="satzanalyse">Satzanalyse</button>
 
           <button class="btn btnPrimary arenaBtn" id="btnArena" data-mode="arena">🛡️ Arena</button>
+           <button class="btn btnPrimary lernspieleBtn" id="btnLernspiele" data-mode="lernspiele">Lernspiele</button>
+
 
           <button class="btn btnGhost" id="btnMistakes">🧩 Fehler üben (<span id="mistakeCount">0</span>)</button>
           <button class="btn btnGhost" id="btnStats">📊 Statistik</button>
@@ -198,6 +200,30 @@
         </div>
       </div>
     </section>
+
+     <!--SCREEN: Lernspiele-->
+     <section class="screen" id="screen-lernspiele">
+      <div class="card lernspieleCard">
+        
+
+        <div class="banner">
+          <h1>Lernspiele</h1>
+        </div>
+
+        <iframe
+  id="lernspieleFrame"
+  data-src="https://learningapps.org/watch?v=pihbo00mk26"
+  style="border:0;width:100%;height:1000px"
+  allowfullscreen
+></iframe>
+
+
+<div class="actions">
+          <button class="btn btnGhost" id="btnLernspieleExit">Zurück zum Menü</button>
+        </div>
+      </div>
+      </section>
+  
 
     <!-- SCREEN: Fehler üben -->
     <section class="screen" id="screen-mistakes">
