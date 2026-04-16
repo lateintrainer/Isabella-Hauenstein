@@ -3679,7 +3679,7 @@ $("#btnLessons14")?.addEventListener("click", () => setLessonsRange(1,5));
 $("#btnLessons58")?.addEventListener("click", () => setLessonsRange(6,10));
 $("#btnLessons914")?.addEventListener("click", () => setLessonsRange(11,15));
 $("#btnLessons1520")?.addEventListener("click", () => setLessonsRange(16,20));
-$("#btnLessons2025")?.addEventListener("click", () => setLessonsRange(21,25));
+$("#btnLessons2035")?.addEventListener("click", () => setLessonsRange(21,25));
 $("#btnLessons2530")?.addEventListener("click", () => setLessonsRange(26,30));
 $("#btnLessons3037")?.addEventListener("click", () => setLessonsRange(31,37));
 
