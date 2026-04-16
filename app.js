@@ -66,14 +66,14 @@ function todayKey(){
 }
 
 function allLessons(){
-  return Array.from({length:15}, (_,i)=>i+1);
+  return Array.from({length:37}, (_,i)=>i+1);
 }
 
 function loadSelectedLessons(){
   try{
     const arr = JSON.parse(localStorage.getItem(LESSONS_KEY) || "null");
-    if(!arr) return allLessons(); // default: alle aktiv
-    return Array.isArray(arr) ? arr.filter(n => Number.isInteger(n) && n>=1 && n<=14) : allLessons();
+    if(!arr) return allLessons(); 
+    return Array.isArray(arr) ? arr.filter(n => Number.isInteger(n) && n>=1 && n<=37) : allLessons();
   }catch{
     return allLessons();
   }
@@ -81,7 +81,7 @@ function loadSelectedLessons(){
 
 function saveSelectedLessons(arr){
   const clean = Array.from(new Set(arr))
-    .filter(n => Number.isInteger(n) && n>=1 && n<=14)
+    .filter(n => Number.isInteger(n) && n>=1 && n<=37)
     .sort((a,b)=>a-b);
 
   localStorage.setItem(LESSONS_KEY, JSON.stringify(clean));
@@ -97,7 +97,7 @@ function updateLessonHint(){
 
 function renderLessonChips(){
   const row = $("#lessonRow");
-  if(row) row.innerHTML = ""; // keine Einzel-Lektionen mehr anzeigen
+  if(row) row.innerHTML = ""; 
   updateLessonHint();
 }
 
@@ -829,7 +829,654 @@ const gameData = {
   prompt: "Discipuli templos ___ . (aedificare)",
   answer: "aedificant",
   explain: "3. Person Plural Präsens Aktiv: aedificant."
-}
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 3.Ps.Pl.Präs. — Welche Form passt?",
+  options: ["probant", "probat", "probatis"],
+  correct: ["probant"],
+  explain: "3.Pers.Pl.Präs.: probant."
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 3.Ps.Sg.Impf. — Welche Form passt?",
+  options: ["probat", "probabat", "probavit"],
+  correct: ["probabat"],
+  explain: "3.Ps.Sg.Impf.: probabat."
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 1.Ps.Sg.Präs. — Welche Form passt?",
+  options: ["indicao", "indico", "indicabam"],
+  correct: ["indico"],
+  explain: "1.Ps.Sg.Präs.: indico."
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 1.Ps.Sg.Perf. — Welche Form passt?",
+  options: ["indicavi", "indicavam", "indicavo"],
+  correct: ["indicavi"],
+  explain: "1.Ps.Sg.Perf.: indicavi."
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 2.Ps.Pl.Impf. — Welche Form passt?",
+  options: ["manebas", "manebatis", "manuistis"],
+  correct: ["manebatis"],
+  explain: "2.Ps.Pl.Impf.: manebatis."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 2.Ps.Pl.Perf. — Welche Form passt?",
+  options: ["clamavitis", "clamavistis", "clamavisti"],
+  correct: ["clamavistis"],
+  explain: "2.Ps.Pl.Perf.: clamavistis."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 1.Ps.Pl.Perf. — Welche Form passt?",
+  options: ["erravimus", "erravabamus", "erramus"],
+  correct: ["erravimus"],
+  explain: "1.Ps.Pl.Perf.: erravimus."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 1.Ps.Pl.Präs. — Welche Form passt?",
+  options: ["invenimus", "invenmus", "inveniomus"],
+  correct: ["invenimus"],
+  explain: "1.Ps.Pl.Präs.: invenimus."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 3.Ps.Sg.Präs. — Welche Form passt?",
+  options: ["liberat", "liberant", "liberatis"],
+  correct: ["liberat"],
+  explain: "3.Ps.Sg.Präs.: liberat."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 2.Ps.Pl.Präs. — Welche Form passt?",
+  options: ["liberas", "lieberatis", "liberatis"],
+  correct: ["liberatis"],
+  explain: "2.Ps.Pl.Präs.: liberatis."
+},
+
+{
+  lesson: 14,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 3.Ps.Pl.Präs. — Welche Form passt?",
+  options: ["narrant", "narro", "narram"],
+  correct: ["narrant"],
+  explain: "3.Ps.Pl.Präs.: narrant."
+},
+
+
+  
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 1.Ps.Sg.Präs. — Welche Form passt?",
+  options: ["servo", "servatis", "servamus"],
+  correct: ["servo"],
+  explain: "1.Ps.Sg.Präs.: servo."
+},
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 3.Ps.Pl.Präs. — Welche Form passt?",
+  options: ["servatis", "servamus", "servant"],
+  correct: ["servant"],
+  explain: "3.Ps.Pl.Präs.: servant."
+},
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 1.Ps.Sg.Impf. — Welche Form passt?",
+  options: ["serbam", "serbabam", "servabam"],
+  correct: ["servabam"],
+  explain: "1.Ps.Sg.Impf.: servabam."
+},
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: 2.Ps.Pl.Perf. — Welche Form passt?",
+  options: ["servistis", "servitis", "servavistis"],
+  correct: ["servavistis"],
+  explain: "2.Ps.Pl.Perf.: servavistis."
+},
+
+
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1334,6 +1981,694 @@ const gameData = {
   correct: ["verborum"],
   explain: "Genitiv Plural: verborum."
 },
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 12,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 13,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 14,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 14,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 14,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 14,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 14,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 15,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 16,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 17,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 18,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 19,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 20,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 21,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 22,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 23,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 24,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+{
+  lesson: 25,
+  type: "mcq",
+  title: "Wähle die richtige Form aus!",
+  prompt: "Angabe: Gen. Pl. — Welche Form passt?",
+  options: ["verborum", "verba", "verbis"],
+  correct: ["verborum"],
+  explain: "Genitiv Plural: verborum."
+},
+
+
+
+
+
+
+
 
 
 
@@ -1991,7 +3326,7 @@ function drawFromDeck(mode, count){
   const total = base.length;
   if(total === 0) return [];
 
-  // Deck-Key abhängig von Mode + ausgewählten Lektionen
+  
   const selKey = Array.from(selectedLessons).sort((a,b)=>a-b).join("-");
   const key = DECK_KEY_PREFIX + mode + "_" + selKey;
 
@@ -2343,6 +3678,10 @@ $("#btnLessonsNone")?.addEventListener("click", () => { saveSelectedLessons([]);
 $("#btnLessons14")?.addEventListener("click", () => setLessonsRange(1,5));
 $("#btnLessons58")?.addEventListener("click", () => setLessonsRange(6,10));
 $("#btnLessons914")?.addEventListener("click", () => setLessonsRange(11,15));
+$("#btnLessons1520")?.addEventListener("click", () => setLessonsRange(16,20));
+$("#btnLessons2025")?.addEventListener("click", () => setLessonsRange(21,25));
+$("#btnLessons2530")?.addEventListener("click", () => setLessonsRange(26,30));
+$("#btnLessons3037")?.addEventListener("click", () => setLessonsRange(31,37));
 
 
 $$("[data-mode]").forEach(btn => btn.addEventListener("click", () => startMode(btn.dataset.mode)));
@@ -2382,6 +3721,12 @@ function doReset(){
   localStorage.removeItem(ARENA_HS_KEY);
   localStorage.removeItem(TEACHER_PIN_KEY);
   localStorage.removeItem(TEACHER_UNLOCK_KEY);
+
+  localStorage.removeItem(ANKI_SELECTED_LESSONS_KEY);
+localStorage.removeItem(ANKI_PROGRESS_KEY);
+localStorage.removeItem(ANKI_CUSTOM_DECKS_KEY);
+localStorage.removeItem(ANKI_CUSTOM_CARDS_KEY);
+localStorage.removeItem(ANKI_PRACTICE_DAYS_KEY);
 
   setLevel(1);
   setTickets(0);
@@ -3137,9 +4482,17 @@ updateMistakeCount();
 updateArenaHighscoreUI();
 
 
+
+
+
 const btnLernspiele = document.getElementById("btnLernspiele");
-const btnStart = document.getElementById("btnAuswahlLernspiel");
+const btnDeklination = document.getElementById("btnDeklination");
+const btnQuizfragen = document.getElementById("btnQuizfragen");
+const btnBackToStep1 = document.getElementById("btnBackToStep1");
 const btnExit = document.getElementById("btnLernspieleExit");
+
+const menuStep1 = document.getElementById("menuStep1");
+const menuStep2 = document.getElementById("menuStep2");
 const frame = document.getElementById("lernspieleFrame");
 
 if (btnLernspiele) {
@@ -3148,17 +4501,1336 @@ if (btnLernspiele) {
   });
 }
 
-if (btnStart) {
-  btnStart.addEventListener("click", () => {
+
+if (btnDeklination) {
+  btnDeklination.addEventListener("click", () => {
+    menuStep1.style.display = "none";
+    menuStep2.style.display = "block";
+
+   
+    frame.src = "";
+    frame.style.display = "none";
+  });
+}
+
+
+if (btnQuizfragen) {
+  btnQuizfragen.addEventListener("click", () => {
     frame.src = "https://learningapps.org/watch?v=pihbo00mk26";
     frame.style.display = "block";
+    document.getElementById("lernspieleFooter")?.classList.remove("hidden");
+  });
+}
+
+
+if (btnBackToStep1) {
+  btnBackToStep1.addEventListener("click", () => {
+    menuStep2.style.display = "none";
+    menuStep1.style.display = "block";
+
+    frame.src = "";
+    frame.style.display = "none";
+    document.getElementById("lernspieleFooter")?.classList.add("hidden");
   });
 }
 
 if (btnExit) {
   btnExit.addEventListener("click", () => {
     showScreen("#screen-menu");
+
+  
+    menuStep2.style.display = "none";
+    menuStep1.style.display = "block";
     frame.src = "";
     frame.style.display = "none";
+    document.getElementById("lernspieleFooter")?.classList.add("hidden");
   });
 }
+
+// ==============================
+// ANKI / VOKABELN
+// ==============================
+
+// ===== Storage Keys =====
+const ANKI_SELECTED_LESSONS_KEY = "latinTrainerAnkiSelectedLessons_v1";
+const ANKI_PROGRESS_KEY = "latinTrainerAnkiProgress_v1";
+const ANKI_CUSTOM_DECKS_KEY = "latinTrainerAnkiCustomDecks_v1";
+const ANKI_CUSTOM_CARDS_KEY = "latinTrainerAnkiCustomCards_v1";
+const ANKI_PRACTICE_DAYS_KEY = "latinTrainerAnkiPracticeDays_v1";
+
+// ===== Eigene Vokabeldaten nach Lektionen =====
+
+const vocabData = [
+  { lesson: 1, front: "puella", back: "das Mädchen" },
+  { lesson: 1, front: "serva", back: "die Sklavin, die Dienerin" },
+  { lesson: 1, front: "silva", back: "der Wald" },
+   { lesson: 1, front: "via", back: "der Weg, die Straße" },
+    { lesson: 1, front: "villa", back: "das Haus, das Landhaus" },
+     { lesson: 1, front: "avus", back: "der Großvater" },
+   { lesson: 1, front: "campus", back: "das Feld, der freie Platz" },
+   { lesson: 1, front: "eqqus", back: "das Pferd" },
+    { lesson: 1, front: "murus", back: "die Mauer" },
+     { lesson: 1, front: "servus", back: "der Sklave, der Diener" },
+      { lesson: 1, front: "vicus", back: "das Dorf, die Gasse" },
+       { lesson: 1, front: "et", back: "und, auch" },
+        { lesson: 1, front: "familia", back: "die Familie" },
+         { lesson: 2, front: "esse", back: "sein, sich befinden" },
+         { lesson: 2, front: "est", back: "er (sie, es) ist" },
+         { lesson: 2, front: "sunt", back: "sie sind" },
+         { lesson: 2, front: "amica", back: "die Freundin" },
+         { lesson: 2, front: "ridere", back: "lachen, auslachen" },
+         { lesson: 2, front: "non", back: "nicht" },
+         { lesson: 2, front: "cur?", back: "warum?" },
+         { lesson: 2, front: "parere", back: "gehorchen" },
+         { lesson: 2, front: "monere", back: "mahnen, ermahnen" },
+         { lesson: 2, front: "debere", back: "müssen, sollen" },
+         { lesson: 2, front: "quid?", back: "was?" },
+         { lesson: 2, front: "timere", back: "fürchten, Angst haben" },
+         { lesson: 2, front: "oculus", back: "das Auge" },
+         { lesson: 2, front: "dolere", back: "schmerzen, wehtun" },
+         { lesson: 2, front: "nunc", back: "Adverb" },
+         { lesson: 2, front: "Lydus servus", back: "der Sklave Lydus" },
+         { lesson: 2, front: "tacere", back: "schweigen, verschweigen" },
+];
+
+// ===== Helper =====
+function ankiTodayKey(){
+  return todayKey();
+}
+
+function ankiNowTs(){
+  return Date.now();
+}
+
+function daysToMs(days){
+  return days * 24 * 60 * 60 * 1000;
+}
+
+function minutesToMs(min){
+  return min * 60 * 1000;
+}
+
+function getAnkiAllLessons(){
+  return Array.from({ length: 37 }, (_, i) => i + 1);
+}
+
+function loadAnkiSelectedLessons(){
+  try{
+    const arr = JSON.parse(localStorage.getItem(ANKI_SELECTED_LESSONS_KEY) || "null");
+    if(!arr) return [];
+    return Array.isArray(arr)
+      ? arr.filter(n => Number.isInteger(n) && n >= 1 && n <= 37)
+      : [];
+  }catch{
+    return [];
+  }
+}
+
+function saveAnkiSelectedLessons(arr){
+  const clean = Array.from(new Set(arr))
+    .filter(n => Number.isInteger(n) && n >= 1 && n <= 37)
+    .sort((a,b) => a-b);
+
+  localStorage.setItem(ANKI_SELECTED_LESSONS_KEY, JSON.stringify(clean));
+  updateAnkiLessonHint();
+}
+
+function loadAnkiPracticeDays(){
+  try{
+    const arr = JSON.parse(localStorage.getItem(ANKI_PRACTICE_DAYS_KEY) || "[]");
+    return Array.isArray(arr) ? arr : [];
+  }catch{
+    return [];
+  }
+}
+
+function markAnkiPracticeDay(){
+  const key = ankiTodayKey();
+  const days = loadAnkiPracticeDays();
+  if(!days.includes(key)){
+    days.push(key);
+    localStorage.setItem(ANKI_PRACTICE_DAYS_KEY, JSON.stringify(days));
+  }
+}
+
+function getAnkiPracticeDaysCount(){
+  return loadAnkiPracticeDays().length;
+}
+
+function getAnkiCounts(){
+  const cards = getSelectedAnkiCards();
+  const now = ankiNowTs();
+
+  let newCount = 0;
+  let learningCount = 0;
+  let reviewCount = 0;
+
+  cards.forEach(card => {
+    const p = getCardProgress(card.id);
+    const state = p.state || "new";
+
+    if(p.due && p.due > now) return;
+
+    if(state === "new"){
+      newCount += 1;
+    } else if(state === "learning" || state === "relearning"){
+      learningCount += 1;
+    } else if(state === "review"){
+      reviewCount += 1;
+    } else {
+      newCount += 1;
+    }
+  });
+
+  return { newCount, learningCount, reviewCount };
+}
+
+function updateAnkiCountsUI(){
+  const counts = getAnkiCounts();
+
+  const newEl = $("#ankiNewCount");
+  const learningEl = $("#ankiLearningCount");
+  const reviewEl = $("#ankiReviewCount");
+
+  if(newEl) newEl.textContent = String(counts.newCount);
+  if(learningEl) learningEl.textContent = String(counts.learningCount);
+  if(reviewEl) reviewEl.textContent = String(counts.reviewCount);
+}
+
+function escapeHtml(str){
+  return String(str ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function deleteAnkiCard(cardId){
+  const cards = loadAnkiCustomCards();
+  const card = cards.find(c => c.id === cardId);
+  if(!card) return;
+
+  const ok = confirm(`Karte "${card.front} → ${card.back}" wirklich löschen?`);
+  if(!ok) return;
+
+  const newCards = cards.filter(c => c.id !== cardId);
+  saveAnkiCustomCards(newCards);
+
+  const progress = loadAnkiProgress();
+  delete progress[cardId];
+  saveAnkiProgress(progress);
+
+  renderAnkiCardList();
+  renderAnkiDeckList();
+  setAnkiCreateFeedback("Karte gelöscht. ✅", true);
+}
+
+function editAnkiCard(cardId){
+  const cards = loadAnkiCustomCards();
+  const card = cards.find(c => c.id === cardId);
+  if(!card) return;
+
+  const newFront = prompt("Neue Vorderseite:", card.front);
+  if(newFront === null) return;
+
+  const newBack = prompt("Neue Rückseite:", card.back);
+  if(newBack === null) return;
+
+  const front = String(newFront).trim();
+  const back = String(newBack).trim();
+
+  if(!front || !back){
+    setAnkiCreateFeedback("Vorder- und Rückseite dürfen nicht leer sein.", false);
+    return;
+  }
+
+  card.front = front;
+  card.back = back;
+
+  saveAnkiCustomCards(cards);
+  renderAnkiCardList();
+  setAnkiCreateFeedback("Karte bearbeitet. ✅", true);
+}
+
+function setAnkiImportFeedback(text, ok){
+  const el = $("#ankiImportFeedback");
+  if(!el) return;
+  el.textContent = text;
+  el.className = "feedback " + (ok ? "ok" : "bad");
+}
+
+function refreshAnkiCustomLessonSelect(){
+  const select = $("#ankiCustomLessonSelect");
+  if(!select) return;
+
+  select.innerHTML = `<option value="">Optionale Lektion zuordnen</option>`;
+
+  for(let i = 1; i <= 37; i++){
+    const opt = document.createElement("option");
+    opt.value = String(i);
+    opt.textContent = `Lektion ${i}`;
+    select.appendChild(opt);
+  }
+}
+// ===== Progress =====
+function loadAnkiProgress(){
+  try{
+    const obj = JSON.parse(localStorage.getItem(ANKI_PROGRESS_KEY) || "{}");
+    return obj && typeof obj === "object" ? obj : {};
+  }catch{
+    return {};
+  }
+}
+
+function saveAnkiProgress(obj){
+  localStorage.setItem(ANKI_PROGRESS_KEY, JSON.stringify(obj));
+}
+
+function getCardProgress(cardId){
+  const all = loadAnkiProgress();
+  if(!all[cardId]){
+  all[cardId] = {
+  interval: 0,
+  ease: 2.5,
+  due: 0,
+  reps: 0,
+  lapses: 0,
+  lastRating: null,
+  state: "new",
+  step: 0
+};
+    saveAnkiProgress(all);
+  }
+  return all[cardId];
+}
+
+function setCardProgress(cardId, data){
+  const all = loadAnkiProgress();
+  all[cardId] = data;
+  saveAnkiProgress(all);
+}
+
+// ===== Custom Decks / Cards =====
+function loadAnkiDecks(){
+  try{
+    const arr = JSON.parse(localStorage.getItem(ANKI_CUSTOM_DECKS_KEY) || "[]");
+    return Array.isArray(arr) ? arr : [];
+  }catch{
+    return [];
+  }
+}
+
+function saveAnkiDecks(arr){
+  localStorage.setItem(ANKI_CUSTOM_DECKS_KEY, JSON.stringify(arr));
+}
+
+function loadAnkiCustomCards(){
+  try{
+    const arr = JSON.parse(localStorage.getItem(ANKI_CUSTOM_CARDS_KEY) || "[]");
+    return Array.isArray(arr) ? arr : [];
+  }catch{
+    return [];
+  }
+}
+
+function saveAnkiCustomCards(arr){
+  localStorage.setItem(ANKI_CUSTOM_CARDS_KEY, JSON.stringify(arr));
+}
+
+function refreshAnkiDeckSelect(){
+  const select = $("#ankiDeckSelect");
+  if(!select) return;
+
+  const decks = loadAnkiDecks();
+  select.innerHTML = `<option value="">Stapel auswählen…</option>`;
+
+  decks.forEach(deck => {
+    const opt = document.createElement("option");
+    opt.value = deck.id;
+    opt.textContent = deck.name;
+    select.appendChild(opt);
+  });
+}
+
+function renderAnkiDeckList(){
+  const wrap = $("#ankiDeckList");
+  if(!wrap) return;
+
+  const decks = loadAnkiDecks();
+  const cards = loadAnkiCustomCards();
+
+  if(decks.length === 0){
+    wrap.innerHTML = `<p class="smallHint">Noch keine eigenen Stapel vorhanden.</p>`;
+    return;
+  }
+
+  wrap.innerHTML = "";
+
+  decks.forEach(deck => {
+    const count = cards.filter(c => c.deckId === deck.id).length;
+
+    const item = document.createElement("div");
+    item.className = "ankiDeckItem";
+
+    item.innerHTML = `
+      <div class="ankiDeckItemTop">
+        <div class="ankiDeckName">${deck.name}</div>
+      </div>
+      <div class="ankiDeckMeta">${count} Karte(n)</div>
+      <div class="ankiDeckActions">
+        <button class="btn btnPrimary btnSmall" data-deck-learn="${deck.id}">Lernen</button>
+        <button class="btn btnGhost btnSmall" data-deck-delete="${deck.id}">Löschen</button>
+      </div>
+    `;
+
+    wrap.appendChild(item);
+  });
+
+  wrap.querySelectorAll("[data-deck-learn]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const deckId = btn.getAttribute("data-deck-learn");
+      startAnkiLearnCustomDeck(deckId);
+    });
+  });
+
+  wrap.querySelectorAll("[data-deck-delete]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const deckId = btn.getAttribute("data-deck-delete");
+      deleteAnkiDeck(deckId);
+    });
+  });
+}
+
+function renderAnkiCardList(){
+  const wrap = $("#ankiCardList");
+  if(!wrap) return;
+
+  const cards = loadAnkiCustomCards();
+
+  if(cards.length === 0){
+    wrap.innerHTML = `<p class="smallHint">Noch keine eigenen Karten vorhanden.</p>`;
+    return;
+  }
+
+  wrap.innerHTML = "";
+
+  cards.forEach(card => {
+    const item = document.createElement("div");
+    item.className = "ankiCardItem";
+
+    item.innerHTML = `
+      <div class="ankiDeckItemTop">
+        <div class="ankiDeckName">${card.deckName || "Eigener Stapel"}</div>
+      </div>
+
+      <div class="ankiCardFrontBack">
+        <div>
+          <div class="ankiCardLabel">Vorderseite</div>
+          <div class="ankiCardValue">${escapeHtml(card.front)}</div>
+        </div>
+        <div>
+          <div class="ankiCardLabel">Rückseite</div>
+          <div class="ankiCardValue">${escapeHtml(card.back)}</div>
+        </div>
+      </div>
+
+      <div class="ankiDeckActions">
+        <button class="btn btnGhost btnSmall" data-card-edit="${card.id}">Bearbeiten</button>
+        <button class="btn btnGhost btnSmall" data-card-delete="${card.id}">Löschen</button>
+      </div>
+    `;
+
+    wrap.appendChild(item);
+  });
+
+  wrap.querySelectorAll("[data-card-edit]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cardId = btn.getAttribute("data-card-edit");
+      editAnkiCard(cardId);
+    });
+  });
+
+  wrap.querySelectorAll("[data-card-delete]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cardId = btn.getAttribute("data-card-delete");
+      deleteAnkiCard(cardId);
+    });
+  });
+}
+
+function deleteAnkiDeck(deckId){
+  const decks = loadAnkiDecks();
+  const cards = loadAnkiCustomCards();
+
+  const deck = decks.find(d => d.id === deckId);
+  if(!deck) return;
+
+  const ok = confirm(`Stapel "${deck.name}" wirklich löschen? Alle Karten darin werden ebenfalls gelöscht.`);
+  if(!ok) return;
+
+  const newDecks = decks.filter(d => d.id !== deckId);
+  const newCards = cards.filter(c => c.deckId !== deckId);
+
+  saveAnkiDecks(newDecks);
+  saveAnkiCustomCards(newCards);
+
+  // Fortschritt der gelöschten Karten ebenfalls entfernen
+  const progress = loadAnkiProgress();
+  Object.keys(progress).forEach(cardId => {
+    if(cardId.startsWith("custom_")){
+      const stillExists = newCards.some(c => c.id === cardId);
+      if(!stillExists){
+        delete progress[cardId];
+      }
+    }
+  });
+  saveAnkiProgress(progress);
+
+refreshAnkiDeckSelect();
+renderAnkiDeckList();
+renderAnkiCardList();
+setAnkiCreateFeedback("Stapel gelöscht. ✅", true);
+}
+
+function startAnkiLearnCustomDeck(deckId){
+  const decks = loadAnkiDecks();
+  const deck = decks.find(d => d.id === deckId);
+
+  if(!deck){
+    alert("Stapel nicht gefunden.");
+    return;
+  }
+
+  ankiActiveCustomDeckId = deckId;
+
+  const cards = getSelectedAnkiCards();
+  if(cards.length === 0){
+    alert("Dieser Stapel enthält noch keine Karten.");
+    ankiActiveCustomDeckId = null;
+    return;
+  }
+
+  markAnkiPracticeDay();
+
+  ankiQueue = getDueAnkiCards();
+  ankiIndex = 0;
+
+  showScreen("#screen-anki-learn");
+
+  if(ankiQueue.length === 0){
+    $("#ankiCardFront").textContent = "Keine fälligen Karten";
+    $("#ankiCardBack").textContent = `Im Stapel "${deck.name}" ist aktuell nichts zu wiederholen.`;
+    $("#ankiCardBack").classList.remove("hidden");
+    $("#ankiDeckInfo").textContent = `Eigener Stapel: ${deck.name}`;
+    updateAnkiCountsUI();
+    $("#ankiShowAnswerWrap")?.classList.add("hidden");
+    $("#ankiRatingWrap")?.classList.add("hidden");
+    return;
+  }
+
+  renderAnkiCard();
+}
+
+// ===== Built-in + Custom Cards zusammenführen =====
+function buildAnkiBaseCards(){
+  const builtIn = vocabData.map((card, idx) => ({
+    id: `lesson_${card.lesson}_${idx}`,
+    source: "lesson",
+    lesson: Number(card.lesson),
+    front: card.front,
+    back: card.back,
+    deckId: null,
+    deckName: `Lektion ${card.lesson}`
+  }));
+
+const custom = loadAnkiCustomCards().map(card => ({
+  id: card.id,
+  source: "custom",
+  lesson: card.lesson ?? null,
+  front: card.front,
+  back: card.back,
+  deckId: card.deckId,
+  deckName: card.deckName || "Eigener Stapel"
+}));
+
+  return [...builtIn, ...custom];
+}
+
+function renderAnkiCustomDeckOverview(){
+  const wrap = $("#ankiCustomDeckOverview");
+  if(!wrap) return;
+
+  const decks = loadAnkiDecks();
+  const cards = loadAnkiCustomCards();
+
+  if(decks.length === 0){
+    wrap.innerHTML = `<p class="smallHint">Noch keine eigenen oder importierten Stapel vorhanden.</p>`;
+    return;
+  }
+
+  wrap.innerHTML = "";
+
+  decks.forEach(deck => {
+    const deckCards = cards.filter(c => c.deckId === deck.id);
+    const lessonSet = Array.from(new Set(deckCards.map(c => c.lesson).filter(v => v != null))).sort((a,b)=>a-b);
+
+    const item = document.createElement("div");
+    item.className = "ankiDeckItem";
+
+    item.innerHTML = `
+      <div class="ankiDeckItemTop">
+        <div class="ankiDeckName">${escapeHtml(deck.name)}</div>
+      </div>
+      <div class="ankiDeckMetaRow">
+        <span>${deckCards.length} Karte(n)</span>
+        <span>${lessonSet.length ? `Lektionen: ${lessonSet.join(", ")}` : `Keine Lektion zugeordnet`}</span>
+      </div>
+      <div class="ankiDeckActions">
+        <button class="btn btnPrimary btnSmall" data-custom-overview-learn="${deck.id}">Lernen</button>
+        <button class="btn btnGhost btnSmall" data-custom-overview-export="${deck.id}">Exportieren</button>
+        <button class="btn btnGhost btnSmall" data-custom-overview-delete="${deck.id}">Löschen</button>
+      </div>
+    `;
+
+    wrap.appendChild(item);
+  });
+
+  wrap.querySelectorAll("[data-custom-overview-learn]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      startAnkiLearnCustomDeck(btn.getAttribute("data-custom-overview-learn"));
+    });
+  });
+
+  wrap.querySelectorAll("[data-custom-overview-export]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      exportAnkiDeck(btn.getAttribute("data-custom-overview-export"));
+    });
+  });
+
+  wrap.querySelectorAll("[data-custom-overview-delete]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      deleteAnkiDeck(btn.getAttribute("data-custom-overview-delete"));
+      renderAnkiCustomDeckOverview();
+    });
+  });
+}
+
+function exportAnkiDeck(deckId){
+  const decks = loadAnkiDecks();
+  const cards = loadAnkiCustomCards();
+
+  const deck = decks.find(d => d.id === deckId);
+  if(!deck) return;
+
+  const deckCards = cards
+    .filter(c => c.deckId === deck.id)
+    .map(c => ({
+      front: c.front,
+      back: c.back,
+      lesson: c.lesson ?? null
+    }));
+
+  const payload = {
+    name: deck.name,
+    cards: deckCards
+  };
+
+  const json = JSON.stringify(payload, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${deck.name.replace(/[^\w\-]+/g, "_") || "stapel"}.json`;
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+function importAnkiDeckFromFile(file){
+  if(!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    try{
+      const data = JSON.parse(String(reader.result || "{}"));
+
+      if(!data || typeof data !== "object"){
+        throw new Error("Ungültige JSON-Struktur.");
+      }
+
+      const name = String(data.name || "").trim();
+      const cards = Array.isArray(data.cards) ? data.cards : [];
+
+      if(!name){
+        throw new Error("Der Stapelname fehlt.");
+      }
+
+      if(cards.length === 0){
+        throw new Error("Der Stapel enthält keine Karten.");
+      }
+
+      const cleanedCards = cards
+        .map(card => ({
+          front: String(card.front || "").trim(),
+          back: String(card.back || "").trim(),
+          lesson: card.lesson == null || card.lesson === "" ? null : Number(card.lesson)
+        }))
+        .filter(card =>
+          card.front &&
+          card.back &&
+          (card.lesson == null || (Number.isInteger(card.lesson) && card.lesson >= 1 && card.lesson <= 37))
+        );
+
+      if(cleanedCards.length === 0){
+        throw new Error("Keine gültigen Karten gefunden.");
+      }
+
+      const decks = loadAnkiDecks();
+      let deckName = name;
+
+      const existingNames = new Set(decks.map(d => normalize(d.name)));
+      let counter = 2;
+      while(existingNames.has(normalize(deckName))){
+        deckName = `${name} (${counter})`;
+        counter++;
+      }
+
+      const deckId = "deck_" + Date.now();
+      decks.push({ id: deckId, name: deckName });
+      saveAnkiDecks(decks);
+
+      const allCards = loadAnkiCustomCards();
+      cleanedCards.forEach((card, idx) => {
+        allCards.push({
+          id: `custom_${Date.now()}_${idx}`,
+          deckId,
+          deckName,
+          front: card.front,
+          back: card.back,
+          lesson: card.lesson
+        });
+      });
+
+      saveAnkiCustomCards(allCards);
+
+      refreshAnkiDeckSelect();
+      renderAnkiDeckList();
+      renderAnkiCardList();
+      renderAnkiCustomDeckOverview();
+
+      setAnkiImportFeedback(`Stapel "${deckName}" importiert. ✅`, true);
+    }catch(err){
+      setAnkiImportFeedback(`Import fehlgeschlagen: ${err.message}`, false);
+    }
+  };
+
+  reader.onerror = () => {
+    setAnkiImportFeedback("Datei konnte nicht gelesen werden.", false);
+  };
+
+  reader.readAsText(file, "utf-8");
+}
+
+$("#btnAnkiCustomDecks")?.addEventListener("click", () => {
+  renderAnkiCustomDeckOverview();
+  setAnkiImportFeedback("", true);
+  showScreen("#screen-anki-custom-decks");
+});
+
+$("#btnAnkiCustomDecksBack")?.addEventListener("click", () => {
+  showScreen("#screen-anki-menu");
+});
+
+$("#btnImportAnkiJson")?.addEventListener("click", () => {
+  $("#ankiImportFile")?.click();
+});
+
+$("#ankiImportFile")?.addEventListener("change", (e) => {
+  const file = e.target.files?.[0];
+  importAnkiDeckFromFile(file);
+  e.target.value = "";
+});
+
+function getSelectedAnkiCards(){
+  const selectedLessons = new Set(loadAnkiSelectedLessons());
+  const base = buildAnkiBaseCards();
+
+  return base.filter(card => {
+    if(card.source === "lesson"){
+      if(ankiActiveCustomDeckId) return false;
+      return selectedLessons.has(Number(card.lesson));
+    }
+
+  if(card.source === "custom"){
+  if(ankiActiveCustomDeckId){
+    return card.deckId === ankiActiveCustomDeckId;
+  }
+
+
+  if(card.lesson == null) return true;
+  return selectedLessons.has(Number(card.lesson));
+}
+
+    return false;
+  });
+}
+function getDueAnkiCards(){
+  const cards = getSelectedAnkiCards();
+  const now = ankiNowTs();
+
+  return cards.filter(card => {
+    const p = getCardProgress(card.id);
+    return !p.due || p.due <= now;
+  });
+}
+
+// ===== Statistik =====
+function getAnkiStats(){
+  const cards = buildAnkiBaseCards();
+  const progress = loadAnkiProgress();
+  const now = ankiNowTs();
+
+  let shortTerm = 0;
+  let longTerm = 0;
+  let due = 0;
+
+  cards.forEach(card => {
+    const p = progress[card.id] || {
+      interval: 0,
+      due: 0
+    };
+
+  const state = p.state || "new";
+const interval = p.interval || 0;
+
+if(state === "review" && interval >= 7){
+  longTerm += 1;
+} else if(state === "learning" || state === "relearning" || interval > 0){
+  shortTerm += 1;
+}
+
+    if(!p.due || p.due <= now) due += 1;
+  });
+
+  return {
+    days: getAnkiPracticeDaysCount(),
+    shortTerm,
+    longTerm,
+    total: cards.length,
+    due
+  };
+}
+
+function openAnkiStats(){
+  const st = getAnkiStats();
+  $("#ankiStatsDays").textContent = String(st.days);
+  $("#ankiStatsShort").textContent = String(st.shortTerm);
+  $("#ankiStatsLong").textContent = String(st.longTerm);
+  $("#ankiStatsTotal").textContent = String(st.total);
+  $("#ankiStatsDue").textContent = String(st.due);
+
+  showScreen("#screen-anki-stats");
+}
+
+// ===== Lektionen UI =====
+function updateAnkiLessonHint(){
+  const el = $("#ankiLessonHint");
+  if(!el) return;
+
+  const selected = loadAnkiSelectedLessons();
+  if(!selected.length){
+    el.textContent = "Keine Lektion ausgewählt.";
+    return;
+  }
+
+  el.textContent = `Aktiv: ${selected.join(", ")}`;
+}
+
+function renderAnkiLessonChips(){
+  const row = $("#ankiLessonRow");
+  if(!row) return;
+
+  row.innerHTML = "";
+  const selected = new Set(loadAnkiSelectedLessons());
+
+  getAnkiAllLessons().forEach(lesson => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "lessonChip" + (selected.has(lesson) ? " isOn" : "");
+    btn.textContent = String(lesson);
+
+    btn.addEventListener("click", () => {
+      const arr = loadAnkiSelectedLessons();
+      if(selected.has(lesson)){
+        saveAnkiSelectedLessons(arr.filter(x => x !== lesson));
+      } else {
+        saveAnkiSelectedLessons([...arr, lesson]);
+      }
+      renderAnkiLessonChips();
+    });
+
+    row.appendChild(btn);
+  });
+
+  updateAnkiLessonHint();
+}
+
+// ===== Lern-Session =====
+let ankiQueue = [];
+let ankiIndex = 0;
+let ankiCurrentCard = null;
+let ankiActiveCustomDeckId = null;
+
+function renderAnkiCard(){
+  const fb = $("#ankiFeedback");
+  if(fb){
+    fb.textContent = "";
+    fb.className = "feedback";
+  }
+
+  updateAnkiCountsUI();
+
+  $("#ankiCardBack")?.classList.add("hidden");
+  $("#ankiRatingWrap")?.classList.add("hidden");
+  $("#ankiShowAnswerWrap")?.classList.remove("hidden");
+
+  if(ankiIndex >= ankiQueue.length){
+  ankiCurrentCard = null;
+
+  $("#ankiCardFront").textContent = "Fertig! 🎉";
+  $("#ankiCardBack").textContent = "Heute sind keine fälligen Karten mehr offen.";
+  $("#ankiCardBack").classList.remove("hidden");
+
+  $("#ankiDeckInfo").textContent = "Sitzung abgeschlossen";
+
+  // ALLES verstecken
+  $("#ankiShowAnswerWrap")?.classList.add("hidden");
+  $("#ankiRatingWrap")?.classList.add("hidden");
+
+  return;
+}
+
+  const card = ankiQueue[ankiIndex];
+  ankiCurrentCard = card;
+
+  $("#ankiCardFront").textContent = card.front;
+  $("#ankiCardBack").textContent = card.back;
+ 
+
+  if(card.source === "lesson"){
+    $("#ankiDeckInfo").textContent = `Lektion ${card.lesson}`;
+  } else {
+    $("#ankiDeckInfo").textContent = `Eigener Stapel: ${card.deckName || "—"}`;
+  }
+}
+
+function startAnkiLearn(){
+
+  ankiActiveCustomDeckId = null;
+  const selectedLessons = loadAnkiSelectedLessons();
+  const hasLessonCards = vocabData.some(v => selectedLessons.includes(Number(v.lesson)));
+  const customCards = loadAnkiCustomCards();
+
+  if(selectedLessons.length === 0 && customCards.length === 0){
+    alert("Bitte wähle mindestens eine Lektion aus oder erstelle eigene Karten.");
+    return;
+  }
+
+  if(selectedLessons.length > 0 && !hasLessonCards && customCards.length === 0){
+    alert("Für die ausgewählten Lektionen sind noch keine Vokabelkarten im Code hinterlegt.");
+    return;
+  }
+
+  markAnkiPracticeDay();
+
+  ankiQueue = getDueAnkiCards();
+  ankiIndex = 0;
+
+  if(ankiQueue.length === 0){
+    showScreen("#screen-anki-learn");
+    $("#ankiCardFront").textContent = "Keine fälligen Karten";
+    $("#ankiCardBack").textContent = "Aktuell ist nichts zu wiederholen.";
+    $("#ankiCardBack").classList.remove("hidden");
+    $("#ankiDeckInfo").textContent = "Alles gelernt";
+   updateAnkiCountsUI();
+    $("#ankiShowAnswerWrap")?.classList.add("hidden");
+    $("#ankiRatingWrap")?.classList.add("hidden");
+    return;
+  }
+
+  showScreen("#screen-anki-learn");
+  renderAnkiCard();
+}
+
+function showAnkiAnswer(){
+  if(!ankiCurrentCard) return;
+  $("#ankiCardBack")?.classList.remove("hidden");
+  $("#ankiShowAnswerWrap")?.classList.add("hidden");
+  $("#ankiRatingWrap")?.classList.remove("hidden");
+}
+
+function applyAnkiRating(card, rating){
+  const p = getCardProgress(card.id);
+  const now = ankiNowTs();
+
+  // Zustände:
+  // new = noch nie richtig gelernt
+  // learning = in Lernphase
+  // review = normale Wiederholung
+  // relearning = nach Fehler wieder kurz lernen
+
+  let state = p.state || "new";
+  let step = Number.isInteger(p.step) ? p.step : 0;
+  let interval = Number(p.interval || 0);
+  let ease = Number(p.ease || 2.5);
+
+  const learningSteps = [10]; // Minuten
+  const relearningSteps = [10]; // Minuten
+
+ 
+  const scheduleInMinutes = (min) => {
+    p.due = now + minutesToMs(min);
+    p.interval = 0;
+  };
+
+  const scheduleInDays = (days) => {
+    p.due = now + daysToMs(days);
+    p.interval = days;
+  };
+
+  // ===== NEW =====
+  if(state === "new"){
+    if(rating === "again"){
+      state = "learning";
+      step = 0;
+      scheduleInMinutes(learningSteps[0]);
+      ease = Math.max(1.3, ease - 0.2);
+      p.lapses = (p.lapses || 0) + 1;
+    }
+
+    if(rating === "hard"){
+      state = "learning";
+      step = 0;
+      scheduleInMinutes(learningSteps[0]);
+      ease = Math.max(1.3, ease - 0.15);
+    }
+
+    if(rating === "good"){
+      state = "review";
+      step = 0;
+      scheduleInDays(1);
+    }
+
+    if(rating === "easy"){
+      state = "review";
+      step = 0;
+      ease += 0.05;
+      scheduleInDays(3);
+    }
+  }
+
+  // ===== LEARNING =====
+  else if(state === "learning"){
+    if(rating === "again"){
+      step = 0;
+      scheduleInMinutes(learningSteps[0]);
+      ease = Math.max(1.3, ease - 0.2);
+      p.lapses = (p.lapses || 0) + 1;
+    }
+
+    if(rating === "hard"){
+      step = 0;
+      scheduleInMinutes(learningSteps[0]);
+      ease = Math.max(1.3, ease - 0.15);
+    }
+
+    if(rating === "good"){
+      if(step < learningSteps.length - 1){
+        step += 1;
+        scheduleInMinutes(learningSteps[step]);
+      } else {
+        state = "review";
+        step = 0;
+        scheduleInDays(1);
+      }
+    }
+
+    if(rating === "easy"){
+      state = "review";
+      step = 0;
+      ease += 0.05;
+      scheduleInDays(3);
+    }
+  }
+
+  // ===== REVIEW =====
+  else if(state === "review"){
+    if(rating === "again"){
+      state = "relearning";
+      step = 0;
+      scheduleInMinutes(relearningSteps[0]);
+      ease = Math.max(1.3, ease - 0.2);
+      p.lapses = (p.lapses || 0) + 1;
+    }
+
+    if(rating === "hard"){
+      interval = Math.max(1, Math.round(Math.max(1, interval) * 1.2));
+      ease = Math.max(1.3, ease - 0.05);
+      scheduleInDays(interval);
+    }
+
+    if(rating === "good"){
+      interval = Math.max(1, Math.round(Math.max(1, interval) * ease));
+      scheduleInDays(interval);
+    }
+
+    if(rating === "easy"){
+      ease += 0.05;
+      interval = Math.max(2, Math.round(Math.max(1, interval) * ease * 1.3));
+      scheduleInDays(interval);
+    }
+  }
+
+  // ===== RELEARNING =====
+  else if(state === "relearning"){
+    if(rating === "again"){
+      step = 0;
+      scheduleInMinutes(relearningSteps[0]);
+      ease = Math.max(1.3, ease - 0.2);
+      p.lapses = (p.lapses || 0) + 1;
+    }
+
+    if(rating === "hard"){
+      step = 0;
+      scheduleInMinutes(relearningSteps[0]);
+      ease = Math.max(1.3, ease - 0.15);
+    }
+
+    if(rating === "good"){
+      state = "review";
+      step = 0;
+      interval = Math.max(1, Math.round(Math.max(1, (p.interval || 1)) * 0.6));
+      scheduleInDays(interval);
+    }
+
+    if(rating === "easy"){
+      state = "review";
+      step = 0;
+      interval = Math.max(1, Math.round(Math.max(1, (p.interval || 1)) * 1.0));
+      ease += 0.03;
+      scheduleInDays(interval);
+    }
+  }
+
+  p.state = state;
+  p.step = step;
+  p.ease = ease;
+  p.reps = (p.reps || 0) + 1;
+  p.lastRating = rating;
+
+  setCardProgress(card.id, p);
+} 
+function rateAnkiCard(rating){
+  if(!ankiCurrentCard) return;
+
+  markAnkiPracticeDay();
+  applyAnkiRating(ankiCurrentCard, rating);
+
+  if(rating === "again"){
+    ankiQueue.push(ankiCurrentCard);
+  }
+
+ankiIndex += 1;
+updateAnkiCountsUI();
+renderAnkiCard();
+}
+
+// ===== Karten erstellen =====
+function setAnkiCreateFeedback(text, ok){
+  const el = $("#ankiCreateFeedback");
+  if(!el) return;
+  el.textContent = text;
+  el.className = "feedback " + (ok ? "ok" : "bad");
+}
+
+function createAnkiDeck(){
+  const inp = $("#ankiDeckNameInput");
+  const name = String(inp?.value || "").trim();
+  if(!name){
+    setAnkiCreateFeedback("Bitte einen Stapelnamen eingeben.", false);
+    return;
+  }
+
+  const decks = loadAnkiDecks();
+  if(decks.some(d => normalize(d.name) === normalize(name))){
+    setAnkiCreateFeedback("Diesen Stapel gibt es schon.", false);
+    return;
+  }
+
+  decks.push({
+    id: "deck_" + Date.now(),
+    name
+  });
+
+saveAnkiDecks(decks);
+refreshAnkiDeckSelect();
+renderAnkiDeckList();
+renderAnkiCardList();
+setAnkiCreateFeedback("Stapel angelegt. ✅", true);
+inp.value = "";
+
+}
+
+function addCustomAnkiCard(){
+  const front = String($("#ankiCustomFront")?.value || "").trim();
+  const back = String($("#ankiCustomBack")?.value || "").trim();
+  const deckId = String($("#ankiDeckSelect")?.value || "").trim();
+  const lessonValue = String($("#ankiCustomLessonSelect")?.value || "").trim();
+  const lesson = lessonValue ? Number(lessonValue) : null;
+
+  if(!front || !back){
+    setAnkiCreateFeedback("Bitte Vorder- und Rückseite eingeben.", false);
+    return;
+  }
+
+  if(!deckId){
+    setAnkiCreateFeedback("Bitte einen Stapel auswählen.", false);
+    return;
+  }
+
+  const decks = loadAnkiDecks();
+  const deck = decks.find(d => d.id === deckId);
+  if(!deck){
+    setAnkiCreateFeedback("Der gewählte Stapel wurde nicht gefunden.", false);
+    return;
+  }
+
+  const cards = loadAnkiCustomCards();
+  cards.push({
+    id: "custom_" + Date.now(),
+    deckId: deck.id,
+    deckName: deck.name,
+    front,
+    back,
+    lesson
+  });
+
+  saveAnkiCustomCards(cards);
+  renderAnkiDeckList();
+  renderAnkiCardList();
+  renderAnkiCustomDeckOverview();
+  setAnkiCreateFeedback("Karte gespeichert. ✅", true);
+
+  $("#ankiCustomFront").value = "";
+  $("#ankiCustomBack").value = "";
+  $("#ankiDeckSelect").value = "";
+  $("#ankiCustomLessonSelect").value = "";
+}
+
+
+
+
+
+saveAnkiCustomCards(cards);
+renderAnkiDeckList()
+renderAnkiCardList();
+setAnkiCreateFeedback("Karte gespeichert. ✅", true);
+
+  $("#ankiCustomFront").value = "";
+  $("#ankiCustomBack").value = "";
+  $("#ankiCustomLessonSelect").value = "";
+
+
+// ===== Navigation =====
+// ===== Anki Zugang / Rätsel =====
+function isAnkiUnlocked(){
+  return localStorage.getItem("ankiUnlocked") === "true";
+}
+
+function unlockAnki(){
+  localStorage.setItem("ankiUnlocked", "true");
+}
+
+function resetAnkiRiddleUI(){
+  const input = $("#ankiRiddleInput");
+  const feedback = $("#ankiRiddleFeedback");
+
+  if(input) input.value = "";
+  if(feedback){
+    feedback.textContent = "";
+    feedback.className = "feedback";
+  }
+}
+
+function openAnkiMenu(){
+  renderAnkiLessonChips();
+  refreshAnkiDeckSelect();
+  $("#ankiLessonPanel")?.classList.remove("hidden");
+  showScreen("#screen-anki-menu");
+}
+
+// Button im Hauptmenü
+$("#btnAnki")?.addEventListener("click", () => {
+  if(localStorage.getItem("ankiUnlocked") === "true"){
+    openAnkiMenu();
+  } else {
+    const input = $("#ankiRiddleInput");
+    const feedback = $("#ankiRiddleFeedback");
+
+    if(input) input.value = "";
+    if(feedback) feedback.textContent = "";
+
+    showScreen("#screen-anki-lock");
+  }
+});
+
+// Menü intern
+$("#btnToggleAnkiLessons")?.addEventListener("click", () => {
+  $("#ankiLessonPanel")?.classList.toggle("hidden");
+});
+
+$("#btnAnkiLessonsAll")?.addEventListener("click", () => {
+  saveAnkiSelectedLessons(getAnkiAllLessons());
+  renderAnkiLessonChips();
+});
+
+$("#btnAnkiLessonsNone")?.addEventListener("click", () => {
+  saveAnkiSelectedLessons([]);
+  renderAnkiLessonChips();
+});
+
+$("#btnAnkiLearn")?.addEventListener("click", startAnkiLearn);
+$("#btnAnkiStats")?.addEventListener("click", openAnkiStats);
+$("#btnAnkiCreate")?.addEventListener("click", () => {
+  refreshAnkiDeckSelect();
+  refreshAnkiCustomLessonSelect();
+  renderAnkiDeckList();
+  renderAnkiCardList();
+  setAnkiCreateFeedback("", true);
+  showScreen("#screen-anki-create");
+});
+
+$("#btnAnkiMenuBack")?.addEventListener("click", () => showScreen("#screen-menu"));
+$("#btnAnkiLearnBack")?.addEventListener("click", () => {
+  ankiActiveCustomDeckId = null;
+  showScreen("#screen-anki-menu");
+});
+$("#btnAnkiStatsBack")?.addEventListener("click", () => showScreen("#screen-anki-menu"));
+$("#btnAnkiCreateBack")?.addEventListener("click", () => showScreen("#screen-anki-menu"));
+
+$("#btnAnkiShowAnswer")?.addEventListener("click", showAnkiAnswer);
+
+$("#btnAnkiAgain")?.addEventListener("click", () => rateAnkiCard("again"));
+$("#btnAnkiHard")?.addEventListener("click", () => rateAnkiCard("hard"));
+$("#btnAnkiGood")?.addEventListener("click", () => rateAnkiCard("good"));
+$("#btnAnkiEasy")?.addEventListener("click", () => rateAnkiCard("easy"));
+
+$("#btnCreateAnkiDeck")?.addEventListener("click", createAnkiDeck);
+$("#btnAddAnkiCard")?.addEventListener("click", addCustomAnkiCard);
+
+// ===== Initial =====
+renderAnkiLessonChips();
+refreshAnkiDeckSelect();
