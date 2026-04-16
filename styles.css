@@ -161,8 +161,9 @@ body{
   text-align:center;
 }
 
-/* ===== Menü-Grid ===== */
 
+
+/* ===== Menü-Grid ===== */
 .menuGrid{
   margin-top: 12px;
   display: grid;
@@ -174,11 +175,14 @@ body{
     "satz"
     "arena"
     "lernspiele"
+    "anki"
+    "taskimports"
     "mistakes"
     "stats"
     "parents"
     "teachers";
 }
+
 .menuGrid > *{ width: 100%; }
 
 /* Areas zuweisen */
@@ -187,7 +191,9 @@ body{
 .menuGrid [data-mode="satzanalyse"]{ grid-area: satz; }
 .menuGrid .arenaBtn{ grid-area: arena; }
 .menuGrid .lernspieleBtn{ grid-area: lernspiele; }
+.menuGrid .ankiBtn{ grid-area: anki; }
 
+#btnTaskImports{ grid-area: taskimports; }
 #btnMistakes{ grid-area: mistakes; }
 #btnStats{ grid-area: stats; }
 #btnParents{ grid-area: parents; }
@@ -201,6 +207,8 @@ body{
       "verben substantive satz"
       ". arena ."
       ". lernspiele ."
+      ". anki ."
+      ". taskimports ."
       ". mistakes ."
       ". stats ."
       ". parents ."
@@ -208,6 +216,8 @@ body{
     align-items: stretch;
   }
 }
+
+
 
 /* ===== Spiel-Header ===== */
 .gameHeader{
@@ -334,7 +344,7 @@ body{
   margin: 6px 0 0;
   font-size: 13px;
   opacity: 0.85;
-}
+}.menuGrid
 
 /* ===== Overlay (Abzeichen) ===== */
 .overlay{
@@ -458,6 +468,276 @@ body{
   outline: 4px solid rgba(8,184,216,0.18);
 }
 
+#lernspieleFrame {
+  width: 90%;        
+  max-width: 3000px; 
+  height: 600px;     
+  margin: 30px auto; 
+  display: none;
+  border-radius: 12px;
+}
 
 
 
+
+/* ===== Anki Button ===== */
+.ankiBtn{
+  background: #08B8D8;;
+  color: #fff;
+}
+
+/* ===== Anki Screens allgemein ===== */
+.ankiCard,
+.ankiLearnCard,
+.ankiStatsCard,
+.ankiCreateCard{
+  position: relative;
+}
+
+/* ===== Anki Lernkarte ===== */
+.ankiBox{
+  margin-top: 14px;
+}
+
+.ankiCardBox{
+  min-height: 220px;
+  border-radius: 22px;
+  border: 2px solid rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 14px;
+}
+
+#ankiCardFront,
+#ankiCardBack{
+  font-size: 28px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+#ankiCardBack{
+  margin-top: 16px;
+  color: #1f2937;
+}
+
+#ankiShowAnswerWrap,
+#ankiRatingWrap{
+  margin-top: 18px;
+}
+
+/* ===== Bewertungsbuttons ===== */
+#btnAnkiAgain{
+  background: #E74C3C;
+  color: #fff;
+}
+
+#btnAnkiHard{
+  background: #F2F2F2;
+  color: #222;
+  border: 2px solid rgba(0,0,0,0.10);
+  box-shadow: none;
+}
+
+#btnAnkiGood{
+  background: #08B8D8;
+  color: #fff;
+}
+
+#btnAnkiEasy{
+  background: #2ECC71;
+  color: #fff;
+}
+
+/* ===== Anki Statistik ===== */
+.ankiStatsCard .rulesBox p{
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+/* ===== Karten erstellen ===== */
+#ankiDeckSelect{
+  background: #fff;
+}
+
+#ankiCreateFeedback{
+  margin-top: 12px;
+}
+
+/* ===== Anki Lektionen ===== */
+#ankiLessonPanel{
+  margin-top: 10px;
+}
+
+#ankiLessonRow{
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* ===== mobile Anpassungen ===== */
+@media (max-width: 559px){
+  .ankiCardBox{
+    min-height: 190px;
+    padding: 18px 14px;
+  }
+
+  #ankiCardFront,
+  #ankiCardBack{
+    font-size: 24px;
+  }
+}
+
+.ankiCounts{
+  margin: 14px 0 8px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.ankiCount{
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  background:#fff;
+  border: 2px solid rgba(0,0,0,0.08);
+}
+
+.ankiCountNew{
+  color: #2F80ED;
+}
+
+.ankiCountLearning{
+  color: #E67E22;
+}
+
+.ankiCountReview{
+  color: #2ECC71;
+}
+
+.ankiDeckList{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ankiDeckItem{
+  border: 2px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 12px;
+  background: #fff;
+}
+
+.ankiDeckItemTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.ankiDeckName{
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.ankiDeckMeta{
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.ankiDeckActions{
+  margin-top: 10px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.btnSmall{
+  padding: 9px 14px;
+  font-size: 14px;
+}
+
+.ankiCardItem{
+  border: 2px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 12px;
+  background: #fff;
+}
+
+.ankiCardFrontBack{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.ankiCardLabel{
+  font-size: 12px;
+  opacity: 0.75;
+  font-weight: 800;
+}
+
+.ankiCardValue{
+  font-weight: 700;
+  word-break: break-word;
+}
+
+#ankiImportFeedback{
+  margin-top: 12px;
+}
+
+.ankiDeckMetaRow{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.82;
+}
+
+/* ===== Anki Menü Grid ===== */
+.ankiMenuGrid{
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+
+.ankiMenuGrid .btn{
+  width: 100%;
+}
+
+
+@media (min-width: 560px){
+  .ankiMenuGrid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lernspieleFooter{
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.lernspieleFooter a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.lernspieleFooter a:hover{
+  text-decoration: underline;
+}
