@@ -90,7 +90,21 @@
 
         <!-- Lektionen-Auswahl -->
 
-<div class="lessonFilter"> <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;"> <strong>📘 Lektionen</strong> <button class="btn btnGhost" id="btnToggleLessons" type="button">Auswahl</button> </div> <div id="lessonPanel" class="hidden"> <div class="lessonRow" id="lessonRow"></div> <div class="actions" style="margin-top:10px;"> <button class="btn btnGhost" id="btnLessonsAll" type="button">Alle</button> <button class="btn btnGhost" id="btnLessonsNone" type="button">Keine</button> <button class="btn btnGhost" id="btnLessons14" type="button">1–5</button> <button class="btn btnGhost" id="btnLessons58" type="button">6–10</button> <button class="btn btnGhost" id="btnLessons914" type="button">11–15</button> </div> <p class="smallHint" id="lessonHint"></p> </div> </div>
+<div class="lessonFilter"> <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;"> 
+  <strong>📘 Lektionen</strong> 
+  <button class="btn btnGhost" id="btnToggleLessons" type="button">Auswahl</button> </div> 
+  <div id="lessonPanel" class="hidden"> <div class="lessonRow" id="lessonRow"></div> 
+  <div class="actions" style="margin-top:10px;"> 
+    <button class="btn btnGhost" id="btnLessonsAll" type="button">Alle</button> 
+    <button class="btn btnGhost" id="btnLessonsNone" type="button">Keine</button>
+     <button class="btn btnGhost" id="btnLessons14" type="button">1–5</button> 
+     <button class="btn btnGhost" id="btnLessons58" type="button">6–10</button> 
+     <button class="btn btnGhost" id="btnLessons914" type="button">11–15</button> 
+     <button class="btn btnGhost" id="btnLessons1520" type="button">16-20</button> 
+     <button class="btn btnGhost" id="btnLessons2035" type="button">21-25</button> 
+     <button class="btn btnGhost" id="btnLessons2530" type="button">26-30</button> 
+     <button class="btn btnGhost" id="btnLessons3037" type="button">30-37    </button> 
+    </div> <p class="smallHint" id="lessonHint"></p> </div> </div>
        
         <div class="menuGrid" id="menuGrid">
           <button class="btn btnPrimary" data-mode="verben">Verben</button>
@@ -100,13 +114,16 @@
           <button class="btn btnPrimary arenaBtn" id="btnArena" data-mode="arena">🛡️ Arena</button>
            <button class="btn btnPrimary lernspieleBtn" id="btnLernspiele" data-mode="lernspiele">Lernspiele</button>
 
+           <button class="btn btnPrimary ankiBtn" id="btnAnki">Vokabeln (Anki)</button>
+           <button class="btn btnGhost" id="btnTaskImports">Lektion importieren</button>
 
-          <button class="btn btnGhost" id="btnMistakes">🧩 Fehler üben (<span id="mistakeCount">0</span>)</button>
+
+          <button class="btn btnGhost" id="btnMistakes">Fehler üben (<span id="mistakeCount">0</span>)</button>
           <button class="btn btnGhost" id="btnStats">📊 Statistik</button>
 
-          <button class="btn btnGhost" id="btnParents">👨‍👩‍👧 Elternbereich</button>
+          <button class="btn btnGhost" id="btnParents">Elternbereich</button>
          
-          <button class="btn btnGhost" id="btnTeachers">🧑‍🏫 Lehrkräftebereich</button>
+          <button class="btn btnGhost" id="btnTeachers">Lehrkräftebereich</button>
         </div>
       </div>
 
@@ -202,32 +219,340 @@
     </section>
 
      <!--SCREEN: Lernspiele-->
- <section class="screen" id="screen-lernspiele">
+<section class="screen" id="screen-lernspiele">
   <div class="card lernspieleCard">
 
     <div class="banner">
       <h1>Lernspiele</h1>
     </div>
 
-    <div class="actions">
-      <button class="btn btnPrimary" id="btnAuswahlLernspiel">
-        3. Deklination 
-      </button>
+    <!-- Menü 1 -->
+    <div id="menuStep1">
+      <div class="actions">
+        <button class="btn btnPrimary" id="btnDeklination">
+          3. Deklination
+        </button>
+      </div>
     </div>
 
-   
+    <!-- Menü 2  -->
+    <div id="menuStep2" style="display:none;">
+      <div class="actions">
+        <button class="btn btnPrimary" id="btnQuizfragen">
+          Quizfragen
+        </button>
+      </div>
+
+      <div class="actions">
+        <button class="btn btnGhost" id="btnBackToStep1">
+          Zurück
+        </button>
+      </div>
+    </div>
+
     <iframe
-      id="lernspieleFrame"
-      style="border:0;width:100%;height:500px; display:none;"
-      allowfullscreen>
-    </iframe>
+  id="lernspieleFrame"
+  style="border:0; display:none;"
+  allowfullscreen>
+</iframe>
 
-    <div class="actions">
-      <button class="btn btnGhost" id="btnLernspieleExit">
-        Zurück zum Menü
-      </button>
+<!-- Footer für Quelle -->
+<div id="lernspieleFooter" class="lernspieleFooter hidden">
+  Inhalte bereitgestellt von 
+  <a href="https://learningapps.org" target="_blank">learningapps.org</a>
+</div>
+
+<div class="actions">
+  <button class="btn btnGhost" id="btnLernspieleExit">
+    Zurück zum Menü
+  </button>
+</div>
+
+  </div>
+</section>
+
+<!-- SCREEN: Vokabeln (Anki) Menü -->
+<section class="screen" id="screen-anki-menu">
+  <div class="card ankiCard">
+
+    <div class="banner">
+      <h1>Vokabeln (Anki)</h1>
     </div>
 
+    <p class="hint">
+      Wähle zuerst die Lektionen aus, die gelernt werden sollen.
+    </p>
+
+    <div class="lessonFilter">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+        <strong>📘 Lektionen auswählen</strong>
+        <button class="btn btnGhost" id="btnToggleAnkiLessons" type="button">Auswahl</button>
+      </div>
+
+      <div id="ankiLessonPanel">
+        <div class="lessonRow" id="ankiLessonRow"></div>
+
+        <div class="actions" style="margin-top:10px; flex-wrap:wrap;">
+          <button class="btn btnGhost" id="btnAnkiLessonsAll" type="button">Alle auswählen</button>
+          <button class="btn btnGhost" id="btnAnkiLessonsNone" type="button">Keine</button>
+        </div>
+
+        <p class="smallHint" id="ankiLessonHint"></p>
+      </div>
+    </div>
+
+    <div class="lessonFilter" style="margin-top:14px;">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+    <strong>Lektionen</strong>
+    <button class="btn btnGhost" id="btnToggleTaskPackages" type="button">Auswahl</button>
+  </div>
+
+  <div id="taskPackagePanel" class="hidden">
+    <div class="fillRow" style="margin-top:10px;">
+      <select class="textInput" id="taskPackageSelect">
+        <option value="">Alle Lektionen</option>
+      </select>
+    </div>
+    <p class="smallHint" id="taskPackageHint">Aktiv: Alle Lektionen</p>
+  </div>
+</div>
+
+  
+<div class="ankiMenuGrid">
+  <button class="btn btnPrimary" id="btnAnkiLearn">Lernen</button>
+  <button class="btn btnPrimary" id="btnAnkiCustomDecks">Eigene Stapel</button>
+  <button class="btn btnGhost" id="btnAnkiStats">Statistik</button>
+  <button class="btn btnGhost" id="btnAnkiCreate">Karten erstellen</button>
+</div>
+    <div class="actions">
+      <button class="btn btnGhost" id="btnAnkiMenuBack">Zurück zum Menü</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="screen-anki-lock">
+  <div class="card">
+
+    <div class="banner">
+      <h1>Zugang zum Vokabeltrainer</h1>
+    </div>
+
+    <div class="rulesBox">
+      <p><strong>Rätsel der Sphinx:</strong></p>
+
+      <p>
+        Mane quattuor pedibus ambulo,  
+  meridie duobus,  
+  vespere tribus.  
+  Quid sum?
+      </p>
+
+      <div class="fillRow">
+        <input class="textInput" id="ankiRiddleInput" type="text" placeholder="Antwort eingeben…" />
+      </div>
+
+      <div class="actions">
+        <button class="btn btnPrimary" id="btnCheckRiddle" type="button">Überprüfen</button>
+      </div>
+
+      <div class="feedback" id="ankiRiddleFeedback"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btnGhost" id="btnBackFromRiddle" type="button">Zurück</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- SCREEN: Vokabeln (Anki) Lernen -->
+<section class="screen" id="screen-anki-learn">
+  <div class="card ankiLearnCard">
+
+    <div class="banner">
+      <h1>Vokabeln lernen</h1>
+    </div>
+
+  <div class="ankiCounts">
+  <div class="ankiCount ankiCountNew">Neu: <strong><span id="ankiNewCount">0</span></strong></div>
+  <div class="ankiCount ankiCountLearning">Lernen: <strong><span id="ankiLearningCount">0</span></strong></div>
+  <div class="ankiCount ankiCountReview">Wiederholen: <strong><span id="ankiReviewCount">0</span></strong></div>
+</div>
+
+    <div class="taskBox ankiBox">
+      <p class="smallHint" id="ankiDeckInfo">Lektionen: —</p>
+
+      <div class="ankiCardBox">
+        <h3 id="ankiCardFront">Vorderseite</h3>
+        <p id="ankiCardBack" class="hidden">Rückseite</p>
+      </div>
+
+      <div class="actions" id="ankiShowAnswerWrap">
+        <button class="btn btnPrimary" id="btnAnkiShowAnswer">Antwort anzeigen</button>
+      </div>
+
+      <div id="ankiRatingWrap" class="hidden">
+        <div class="actions" style="flex-wrap:wrap;">
+          <button class="btn btnDanger" id="btnAnkiAgain">Nochmal</button>
+          <button class="btn btnGhost" id="btnAnkiHard">Schwer</button>
+          <button class="btn btnPrimary" id="btnAnkiGood">Gut</button>
+          <button class="btn btnPrimary" id="btnAnkiEasy">Einfach</button>
+        </div>
+      </div>
+
+      <div class="feedback" id="ankiFeedback" aria-live="polite"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btnGhost" id="btnAnkiLearnBack">Zurück</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN: Vokabeln (Anki) Statistik -->
+<section class="screen" id="screen-anki-stats">
+  <div class="card ankiStatsCard">
+
+    <div class="banner">
+      <h1>Anki-Statistik</h1>
+    </div>
+
+    <div class="rulesBox">
+      <p>Lerntage: <strong><span id="ankiStatsDays">0</span></strong></p>
+      <p>Kurzzeitgedächtnis: <strong><span id="ankiStatsShort">0</span></strong></p>
+      <p>Langzeitgedächtnis: <strong><span id="ankiStatsLong">0</span></strong></p>
+      <p>Karten insgesamt: <strong><span id="ankiStatsTotal">0</span></strong></p>
+      <p>Heute fällig: <strong><span id="ankiStatsDue">0</span></strong></p>
+    </div>
+
+    <div class="actions">
+      <button class="btn btnGhost" id="btnAnkiStatsBack">Zurück</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN: Vokabeln (Anki) Karten erstellen -->
+<section class="screen" id="screen-anki-create">
+  <div class="card ankiCreateCard">
+
+    <div class="banner">
+      <h1>Karten erstellen</h1>
+    </div>
+
+    <div class="rulesBox">
+      <p><strong>Eigenen Stapel anlegen</strong></p>
+
+      <div class="fillRow" style="margin-top:10px;">
+        <input class="textInput" id="ankiDeckNameInput" type="text" placeholder="Name des Stapels…" />
+      </div>
+
+      <div class="actions">
+        <button class="btn btnPrimary" id="btnCreateAnkiDeck">Stapel anlegen</button>
+      </div>
+
+      <hr style="border:none;border-top:2px solid rgba(0,0,0,0.06); margin:16px 0;">
+
+      <p><strong>Neue Karte hinzufügen</strong></p>
+
+      <div class="fillRow" style="margin-top:10px;">
+        <input class="textInput" id="ankiCustomFront" type="text" placeholder="Vorderseite / Latein…" />
+      </div>
+
+      <div class="fillRow" style="margin-top:10px;">
+        <input class="textInput" id="ankiCustomBack" type="text" placeholder="Rückseite / Deutsch…" />
+      </div>
+
+      <div class="fillRow" style="margin-top:10px;">
+        <select class="textInput" id="ankiDeckSelect">
+          <option value="">Stapel auswählen…</option>
+        </select>
+      </div>
+
+      <div class="fillRow" style="margin-top:10px;">
+  <select class="textInput" id="ankiCustomLessonSelect">
+    <option value="">Optionale: Lektion zuordnen</option>
+  </select>
+</div>
+
+      <div class="actions">
+        <button class="btn btnPrimary" id="btnAddAnkiCard">Karte speichern</button>
+      </div>
+
+      <hr style="border:none;border-top:2px solid rgba(0,0,0,0.06); margin:16px 0;">
+
+<p><strong>Meine Stapel</strong></p>
+<div id="ankiDeckList" class="ankiDeckList"></div>
+<hr style="border:none;border-top:2px solid rgba(0,0,0,0.06); margin:16px 0;">
+
+<p><strong>Meine Karten</strong></p>
+<div id="ankiCardList" class="ankiDeckList"></div>
+      <div class="feedback" id="ankiCreateFeedback" aria-live="polite"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btnGhost" id="btnAnkiCreateBack">Zurück</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN: Vokabeln (Anki) Eigene Stapel -->
+<section class="screen" id="screen-anki-custom-decks">
+  <div class="card ankiCreateCard">
+
+    <div class="banner">
+      <h1>Eigene Stapel</h1>
+    </div>
+
+    <div class="rulesBox">
+      <div class="actions" style="justify-content:flex-start;">
+        <button class="btn btnPrimary" id="btnImportAnkiJson">JSON importieren</button>
+      </div>
+
+      <input type="file" id="ankiImportFile" accept=".json,application/json" class="hidden">
+
+      <div class="feedback" id="ankiImportFeedback" aria-live="polite"></div>
+
+      <hr style="border:none;border-top:2px solid rgba(0,0,0,0.06); margin:16px 0;">
+
+      <p><strong>Meine importierten / eigenen Stapel</strong></p>
+      <div id="ankiCustomDeckOverview" class="ankiDeckList"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btnGhost" id="btnAnkiCustomDecksBack">Zurück</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN: Klassenpaket importieren -->
+<section class="screen" id="screen-task-imports">
+  <div class="card">
+    <div class="banner">
+      <h1>Klassenpaket importieren</h1>
+    </div>
+
+    <div class="rulesBox">
+      <p>
+        Hier kannst man Lektionen importieren.
+      </p>
+
+      <div class="actions" style="justify-content:flex-start;">
+        <button class="btn btnPrimary" id="btnImportTaskJson">JSON-Datei auswählen</button>
+      </div>
+
+      <input type="file" id="taskImportFile" accept=".json,application/json" class="hidden">
+
+      <div class="feedback" id="taskImportFeedback" aria-live="polite"></div>
+
+      <hr style="border:none;border-top:2px solid rgba(0,0,0,0.06); margin:16px 0;">
+
+      <p><strong>Importierte Lektionen</strong></p>
+      <div id="taskImportList" class="ankiDeckList"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btnGhost" id="btnTaskImportsBack">Zurück</button>
+    </div>
   </div>
 </section>
 
@@ -274,6 +599,45 @@
           </div>
 
           <div class="feedback" id="mistakesFeedback" aria-live="polite"></div>
+          <hr style="border:none;border-top:2px solid rgba(0,0,0,0.06); margin:16px 0;">
+
+<p><strong>Lektion erstellen</strong></p>
+
+<div class="fillRow" style="margin-top:10px;">
+  <input class="textInput" id="teacherPackageName" type="text" placeholder="Name des Pakets…" />
+</div>
+
+<div class="fillRow" style="margin-top:10px;">
+  <select class="textInput" id="teacherPackageMode">
+    <option value="verben">Verben</option>
+    <option value="substantive">Substantive</option>
+    <option value="satzanalyse">Satzanalyse</option>
+  </select>
+</div>
+
+<div class="fillRow" style="margin-top:10px;">
+  <select class="textInput" id="teacherPackageLesson">
+    <option value="">Lektion auswählen…</option>
+  </select>
+</div>
+
+<div class="actions">
+  <button class="btn btnGhost" id="btnTeacherLoadVerbTemplate">Vorlage Verben</button>
+  <button class="btn btnGhost" id="btnTeacherLoadSubTemplate">Vorlage Substantive</button>
+  <button class="btn btnGhost" id="btnTeacherLoadAnalysisTemplate">Vorlage Satzanalyse</button>
+</div>
+
+<div id="teacherTaskBuilder" class="rulesBox" style="margin-top:14px;">
+  <p class="smallHint">Wähle zuerst eine Vorlage.</p>
+</div>
+
+<div class="actions">
+  <button class="btn btnPrimary" id="btnTeacherAddTask">+ Aufgabe hinzufügen</button>
+  <button class="btn btnPrimary" id="btnTeacherDownloadTaskPackage">JSON herunterladen</button>
+  <button class="btn btnGhost" id="btnTeacherResetTaskBuilder">Leeren</button>
+</div>
+
+<div class="feedback" id="teacherTaskBuilderFeedback" aria-live="polite"></div>
         </div>
 
         <div class="actions">
@@ -423,8 +787,8 @@
       </p>
 
       <p>
-        Verantwortlich für den Inhalt:<br>
-        <strong>Isabella Hauenstein</strong>
+        Verantwortlich für den Inhalt: Isabella Hauenstein<br>
+        <strong>I</strong>
       </p>
 
       <p>
@@ -490,3 +854,14 @@
   <script src="app.js"></script>
 </body>
 </html>
+   
+     
+
+     
+        
+        
+
+
+
+
+       
